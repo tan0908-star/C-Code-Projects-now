@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "编译当前C文件",  // 任务名称，需和launch.json里的preLaunchTask一致
+            "type": "shell",
+            "command": "gcc",  // 编译器（GCC），如果是MinGW可能需要写"mingw32-gcc.exe"
+            "args": [
+                "-g",  // 必须加，生成调试信息（否则调试会失败）
+                "${file}",  // 指代当前打开的C文件（比如test.c）
+                "-o",  // 用于指定输出文件名
+                "${fileDirname}/${fileBasenameNoExtension}.exe"  // 输出路径：当前文件所在文件夹/当前文件名.exe（比如test.exe）
+            ],
+            "options": {
+                "cwd": "${fileDirname}"  // 编译时的工作目录（当前C文件所在的文件夹）
+            },
+            "problemMatcher": ["$gcc"],  // 自动捕获编译错误，显示在"问题"面板
+            "group": {
+                "kind": "build",
+                "isDefault": true  // 设置为默认构建任务，按Ctrl+Shift+B可手动触发编译
+            }
+        }
+    ]
+}
