@@ -6,13 +6,14 @@
             "type": "cppdbg",  // 调试类型：cppdbg适配gdb调试器（正确）
             "request": "launch",
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",  // 可执行文件路径（正确）
+            
             "args": [],  // 调试时传递的参数（无则留空）
             "stopAtEntry": false,  // 是否在程序入口处暂停（false=不暂停）
             "cwd": "${fileDirname}",  // 调试工作目录（当前文件所在目录）
             "environment": [],
             "externalConsole": false,  // 是否使用外部控制台（false=用VS Code内置终端）
             "MIMode": "gdb",  // 调试模式：gdb（正确）
-            "miDebuggerPath": "D:\\MInGw\\x86_64-8.1.0-release-posix-seh-rt_v6-rev0\\mingw64\\bin\\gdb.exe",  // 关键：替换为你电脑中gdb.exe的实际路径
+            "miDebuggerPath": "D:\\MinGw\\x86_64-8.1.0-release-posix-seh-rt_v6-rev0\\mingw64\\bin\\gdb.exe",  // 关键：替换为你电脑中gdb.exe的实际路径
             "setupCommands": [
                 {
                     "description": "为 gdb 启用整齐打印",
