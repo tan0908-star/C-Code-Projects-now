@@ -73,10 +73,11 @@ SElemType gettop(sqstack s)
     if (stackempty(s))
     {
         printf("栈空，无法获取栈顶元素!\n");
+        return -1;
     }
     else
     {
-        return *(--s.top);
+        return *(s.top - 1);
     }
 }
 void printfstack(sqstack s)
@@ -85,13 +86,11 @@ void printfstack(sqstack s)
     {
         printf("栈空，无法打印栈元素!\n");
     }
-    else
+    SElemType *p = s.top - 1;
+    while (p >= s.base)
     {
-        while (!stackempty(s))
-        {
-            printf("%d", gettop(s));
-            s.top--;
-        }
+        printf("%d", *p);
+        p--;
     }
 }
 void Ten_Change_X()
@@ -101,19 +100,21 @@ void Ten_Change_X()
     initstack(&s); // 该函数调用时要求传入指针类型的栈实例即地址，所以要取地址
     printf("请输入待转换的十进制数m和要转换为几进制n:\n");
     int m, n, x;
-    scanf("%d,%d", &m, &n);
+    scanf("%d %d", &m, &n);
     while (m != 0)
     {
         pushstack(&s, m % n);
         m /= n;
     }
+    if (stackempty(s))
+        printf("0");
     while (!stackempty(s))
     {
         popstack(&s, &x);
         printf("%d", x);
     }
     printf("\n");
-    // printfstack(s);
+    free(s.base);
 }
 int main()
 {
