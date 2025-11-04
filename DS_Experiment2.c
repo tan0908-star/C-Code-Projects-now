@@ -68,18 +68,18 @@ void popstack(sqstack *s, SElemType *e)
         *e = *(--s->top); // 先栈顶指针减1，再把要出栈的元素赋值给e
     }
 }
-SElemType gettop(sqstack s)
-{
-    if (stackempty(s))
-    {
-        printf("栈空，无法获取栈顶元素!\n");
-        return -1;
-    }
-    else
-    {
-        return *(s.top - 1);
-    }
-}
+// SElemType gettop(sqstack s)
+// {
+//     if (stackempty(s))
+//     {
+//         printf("栈空，无法获取栈顶元素!\n");
+//         return -1;
+//     }
+//     else
+//     {
+//         return *(s.top - 1);
+//     }
+// }
 void printfstack(sqstack s)
 {
     if (stackempty(s))
